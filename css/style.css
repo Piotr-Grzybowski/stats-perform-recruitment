@@ -1,6 +1,127 @@
 * {
   box-sizing: border-box;
-  padding: 20px 30px;
+  padding: 0px 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+@media (max-width: 760px) {
+  h1 {
+    font-size: 24px;
+  }
+  /* Force table to not be like tables anymore */
+  table, th, tbody, th, td, tr {
+    display: block;
+  }
+  /* Hide table headers (but not display: none;, for accessibility) */
+  th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /*
+	Label the data
+	*/
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "Description";
+  }
+  td:nth-of-type(3):before {
+    content: "Updated";
+  }
+  td:nth-of-type(4):before {
+    content: "Download";
+  }
+}
+
+@media (max-width: 760px), (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table, th, tbody, th, td, tr {
+    display: block;
+  }
+  /* Hide table headers (but not display: none;, for accessibility) */
+  th {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+  }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  /*
+	Label the data
+	*/
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "Description";
+  }
+  td:nth-of-type(3):before {
+    content: "Updated";
+  }
+  td:nth-of-type(4):before {
+    content: "Download";
+  }
 }
 
 main {
@@ -10,18 +131,12 @@ main {
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+main .loader {
   margin: 0 auto;
-}
-
-.repos-container {
-  padding: 10px 30px;
-}
-
-th, td {
-  border: 1px solid black;
-}
-
-.loader {
   border: 16px solid #f3f3f3;
   /* Light grey */
   border-top: 16px solid #3498db;

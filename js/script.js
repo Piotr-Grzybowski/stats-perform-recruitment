@@ -59,9 +59,11 @@ async function showMeRepos() {
     await getUserRepos(userName)
       .then((data) => {
         for (let record of data) {
+          console.log(record);
           // if successful show repositories updated at given date or sooner
+          /* record.downloads_url doesn't work so to get link to download repo had to create it using other data from record*/
           if (Date.parse(record.updated_at) >= Date.parse(updated)) {
-            containerHtml += `<tr><td>${record.name}</td><td>${record.description ? record.description : 'No description provided'}</td><td>${record.updated_at}</td><td><a href=${record.downloads_url}>${record.downloads_url}</a></td></tr>`;
+            containerHtml += `<tr><td>${record.name}</td><td>${record.description ? record.description : 'No description provided'}</td><td>${record.updated_at}</td><td><a href="https://github.com/${userName}/${record.name}/archive/master.zip">download</a></td></tr>`;
           }
         }
       })
